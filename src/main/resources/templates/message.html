@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>提示信息</title>
+</head>
+<body>
+<h3>提示信息</h3>
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+<div th:unless="${message}">
+    <p>未知错误</p>
+</div>
+<br/>
+
+</body>
+</html>

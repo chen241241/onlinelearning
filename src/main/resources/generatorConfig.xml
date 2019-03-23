@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="C:/Users/Kevin/.m2/repository/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />
+
+    <context id="DB2Tables" defaultModelType="flat" targetRuntime="MyBatis3DynamicSQL">
+
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql:///onlinelearning?serverTimezone=UTC"
+                        userId="root"
+                        password="chen241241">
+
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.ck.onlinelearning.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.ck.onlinelearning.dao" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ck.onlinelearning.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table schema="onlinelearning" tableName="user"/>
+        <table schema="onlinelearning" tableName="power"/>
+        <!--<table schema="onlinelearning" tableName="product"/>-->
+        <!--<table schema="onlinelearning" tableName="order"  delimitIdentifiers="true">-->
+            <!--<generatedKey column="oid" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+        <!--<table schema="onlinelearning" tableName="check_in"/>-->
+        <!--<table schema="onlinelearning" tableName="order_item"/>-->
+
+
+    </context>
+</generatorConfiguration>

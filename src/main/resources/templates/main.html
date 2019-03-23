@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+    OK!
+    <p th:if="${session.user}!=null" th:text="'欢迎，'+${session.user.name}"></p>
+    <a th:unless="${session.user}!=null" href="user/login" name="login">login</a>
+    <a th:unless="${session.user}!=null" href="user/register" name="register">register</a>
+
+</body>
+</html>

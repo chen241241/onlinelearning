@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <script>
+        function check(form) {
+            var reg = /^\s+|\s+$/g;
+            if (!/^.{1,20}$/.test(form.name.value.replace(reg, ""))) {
+                alert("用户名不合规格,长度要在[1,20]");
+                return false;
+            } else if (!/^.{1,20}$/.test(form.password.value.replace(reg, ""))) {
+                alert("密码不合规格,长度要在[1,20]");
+                return false;
+            } else if (form.repassword.value.replace(reg, "") != form.password.value.replace(reg, "")) {
+                alert("两次输入密码不一致！");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form th:action="@{/register}" method="post" id="form" name="form">
+        <label>用户名：</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label>昵称：</label>
+        <input type="text" name="nickname">
+        <br>
+        <label>输入密码：</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <label>确认密码：</label>
+        <input type="password" name="repassword" id="repassword" onblur="check(document.form)">
+        <label>
+            用户组：
+            <select name="pid">
+                <th:block th:each="role:${power}">
+                    <option th:text="${role.pname}" th:value="${role.pid}">test</option>
+                </th:block>
+            </select>
+        </label>
+        <input type="submit">
+    </form>
+</body>
+</html>
