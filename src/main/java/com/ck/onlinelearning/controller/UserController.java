@@ -52,7 +52,7 @@ public class UserController {
     }
     @GetMapping("/")
     public String main(){
-        return "main.html";
+        return "layuicms2.0-master/index.html";
     }
     @GetMapping("login")
     public String login(){
