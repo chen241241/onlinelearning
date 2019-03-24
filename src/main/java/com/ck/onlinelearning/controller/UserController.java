@@ -3,11 +3,12 @@ package com.ck.onlinelearning.controller;
 import com.ck.onlinelearning.entity.User;
 import com.ck.onlinelearning.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -52,11 +53,21 @@ public class UserController {
     }
     @GetMapping("/")
     public String main(){
-        return "layuicms2.0-master/index.html";
+        return "index.html";
     }
     @GetMapping("login")
     public String login(){
         return "user/login.html";
+    }
+
+    @GetMapping("/js/bodyTab.js")
+    public String jsbodyTab() {
+        return "redirect:/static/js/bodyTab.js";
+    }
+
+    @GetMapping("/page/main.html")
+    public String page() {
+        return "/page/main.html";
     }
 
     @GetMapping("/register")
@@ -64,6 +75,46 @@ public class UserController {
         model.addAttribute("power", userService.getAllPower());
         return "user/register.html";
     }
+
+//    @GetMapping("/**/{a}/{b}")
+//    public String test(@PathVariable("a") String a,@PathVariable("b") String b) {
+//        return "/static/"+a+"/"+b;
+//    }
+//    @RequestMapping(value = "/page/{a}/{b}",method = RequestMethod.GET)
+//    public String repage(@PathVariable("a") String a,@PathVariable("b") String b) {
+//        return "/page/"+a+"/"+b;
+//    }
+    @GetMapping("/page/**")
+    public String repage(HttpServletRequest request) {
+        return request.getRequestURI();
+    }
+    @GetMapping("/page/**/**.js")
+    public String repagestatic(HttpServletRequest request) {
+        return "redirect:/static"+request.getRequestURI();
+    }
+
+    @GetMapping("/css/**")
+    public String cssstatic(HttpServletRequest request) {
+        return "redirect:/static"+request.getRequestURI();
+    }
+    @GetMapping("/images/**")
+    public String imagesstatic(HttpServletRequest request) {
+        return "redirect:/static"+request.getRequestURI();
+    }
+    @GetMapping("/js/**")
+    public String jsstatic(HttpServletRequest request) {
+        return "redirect:/static"+request.getRequestURI();
+    }
+    @GetMapping("/json/**")
+    public String jsonstatic(HttpServletRequest request) {
+        return "redirect:/static"+request.getRequestURI();
+    }
+//
+    @GetMapping("/layui/**")
+    public String layuistatic(HttpServletRequest request) {
+        return "redirect:/static/"+request.getRequestURI();
+    }
+
 }
 
 
