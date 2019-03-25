@@ -67,7 +67,7 @@ public class UserController {
 
     @GetMapping("/page/main.html")
     public String page() {
-        return "/page/main.html";
+        return "page/main.html";
     }
 
     @GetMapping("/register")
