@@ -103,16 +103,19 @@ public class UserController {
     }
     @GetMapping("/js/**")
     public String jsstatic(HttpServletRequest request) {
+        System.out.println(request.getRequestURI());
         return "redirect:/static"+request.getRequestURI();
     }
     @GetMapping("/json/**")
     public String jsonstatic(HttpServletRequest request) {
+        System.out.println(request.getRequestURI());
         return "redirect:/static"+request.getRequestURI();
     }
 //
     @GetMapping("/layui/**")
     public String layuistatic(HttpServletRequest request) {
-        return "redirect:/static/"+request.getRequestURI();
+        System.out.println(request.getRequestURI());
+        return "redirect:/static"+request.getRequestURI();
     }
 
 }
